@@ -1,0 +1,17 @@
+<h1>Todos</h1>
+
+<input type="text" name="todo" id="todo-input" placeholder="to be done" (keyup.enter)="keyUp($event.target)">
+
+<ul>
+  <app-detail [todo]="todo" (clear$)="clearByIndex(i)" (checked$)="detailChange($event, todo)" *ngFor="let todo of todos; let i = index">{{i+1}}. {{todo.name}}</app-detail>
+</ul>
+
+<div>
+  <span>
+    {{ todos.length }} items
+  </span>
+</div>
+
+<div *ngIf="hasComplete" (click)="clearComplete()">
+  clear complete
+</div>
